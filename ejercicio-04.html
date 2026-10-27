@@ -46,7 +46,7 @@
       });
 
       async function obtenerPokemon(nombre) {
-        message.innerHTML = 'Buscando Pokémon...';
+        message.textContent = 'Buscando Pokémon...';
         nombre = nombre.toLowerCase();
 
         const api_url = 'https://pokeapi.co/api/v2/pokemon/' + nombre;
@@ -62,12 +62,12 @@
           }
 
           const datos = await respuesta.json();
-          nameElement.innerHTML = datos.name;
-          detailsElement.innerHTML = 'ID: ' + datos.id + ' | Altura: ' + datos.height;
+          nameElement.textContent = datos.name;
+          detailsElement.textContent = 'ID: ' + datos.id + ' - Altura: ' + datos.height;
           imageElement.src = datos.sprites.front_default;
-          message.innerHTML = 'Pokémon encontrado: ' + datos.name;
+          message.textContent = 'Pokémon encontrado: ' + datos.name;
         } catch (error) {
-          message.innerHTML = error.message;
+          message.textContent = error.message;
         }
       }
     </script>

@@ -23,11 +23,11 @@
         <section id="starship-result" class="result" aria-live="polite">
           <h2>Resultado</h2>
           <div class="cards">
-            <div class="card"><span class="card-label">Nombre</span><div class="card-value" id="starship-name"></div></div>
-            <div class="card"><span class="card-label">Modelo</span><div class="card-value" id="starship-model"></div></div>
-            <div class="card"><span class="card-label">Fabricante</span><div class="card-value" id="starship-manufacturer"></div></div>
-            <div class="card"><span class="card-label">Costo en créditos</span><div class="card-value" id="starship-cost"></div></div>
-            <div class="card"><span class="card-label">Longitud</span><div class="card-value" id="starship-length"></div></div>
+            <div class="card"><p class="card-label">Nombre</p><div class="card-value" id="starship-name"></div></div>
+            <div class="card"><p class="card-label">Modelo</p><div class="card-value" id="starship-model"></div></div>
+            <div class="card"><p class="card-label">Fabricante</p><div class="card-value" id="starship-manufacturer"></div></div>
+            <div class="card"><p class="card-label">Costo en créditos</p><div class="card-value" id="starship-cost"></div></div>
+            <div class="card"><p class="card-label">Longitud</p><div class="card-value" id="starship-length"></div></div>
           </div>
         </section>
       </section>
@@ -48,13 +48,7 @@
       });
 
       async function obtenerNave(id) {
-        message.innerHTML = 'Buscando nave...';
-
-        if (id < 1) {
-          message.innerHTML = 'Ingrese un ID de nave mayor que cero.';
-          return;
-        }
-
+        message.textContent = 'Buscando nave...';
         const api_url = 'https://swapi.dev/api/starships/' + id + '/';
 
         try {
@@ -68,14 +62,14 @@
           }
 
           const datos = await respuesta.json();
-          starshipName.innerHTML = datos.name;
-          starshipModel.innerHTML = datos.model;
-          starshipManufacturer.innerHTML = datos.manufacturer;
-          starshipCost.innerHTML = datos.cost_in_credits;
-          starshipLength.innerHTML = datos.length;
-          message.innerHTML = 'Nave encontrada: ' + datos.name;
+          starshipName.textContent = datos.name;
+          starshipModel.textContent = datos.model;
+          starshipManufacturer.textContent = datos.manufacturer;
+          starshipCost.textContent = datos.cost_in_credits;
+          starshipLength.textContent = datos.length;
+          message.textContent = 'Nave encontrada: ' + datos.name;
         } catch (error) {
-          message.innerHTML = error.message;
+          message.textContent = error.message;
         }
       }
     </script>

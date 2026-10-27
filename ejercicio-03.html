@@ -46,13 +46,7 @@
       });
 
       async function obtenerPersonaje(id) {
-        message.innerHTML = 'Buscando personaje...';
-
-        if (id < 1) {
-          message.innerHTML = 'Ingrese un ID de personaje mayor que cero.';
-          return;
-        }
-
+        message.textContent = 'Buscando personaje...';
         const api_url = 'https://dragonball-api.com/api/characters/' + id;
 
         try {
@@ -66,12 +60,12 @@
           }
 
           const datos = await respuesta.json();
-          nameElement.innerHTML = datos.name;
-          descriptionElement.innerHTML = datos.description;
+          nameElement.textContent = datos.name;
+          descriptionElement.textContent = datos.description;
           imageElement.src = datos.image;
-          message.innerHTML = 'Personaje encontrado: ' + datos.name;
+          message.textContent = 'Personaje encontrado: ' + datos.name;
         } catch (error) {
-          message.innerHTML = error.message;
+          message.textContent = error.message;
         }
       }
     </script>
